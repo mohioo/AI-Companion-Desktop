@@ -1,4 +1,4 @@
-The dsktop companion is an animated avatar that walk and talk on your desktop,
+The desktop companion is an animated avatar that walk and talk on your desktop,
 
 **The companion have different features : 
 - read google news.
