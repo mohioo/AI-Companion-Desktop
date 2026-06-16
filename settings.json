@@ -1,0 +1,19 @@
+{
+    "current_character": "",
+    "interval": 60,
+    "scale": 0.3,
+    "news_topic": "AI",
+    "alarms": [
+        "10:00",
+        "14:00",
+        "18:00"
+    ],
+    "language": "English",
+    "voice_gender": "Feale",
+    "speech_bubble_enabled": true,
+    "sound_enabled": true,
+    "always_on_top": true,
+    "weather_location": "",
+    "youtube_channel_id": "",
+    "last_seen_video_url": ""
+}

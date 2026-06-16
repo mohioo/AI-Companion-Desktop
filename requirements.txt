@@ -1,0 +1,4 @@
+PyQt5==5.15.9
+Flask==3.0.0
+edge-tts==6.1.9
+feedparser==6.0.10
