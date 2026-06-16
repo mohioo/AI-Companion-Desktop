@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Companion Admin</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f9; padding: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; max-width: 450px; margin: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        label { font-weight: bold; display: block; margin-top: 15px; }
+        select, input { width: 95%; padding: 8px; margin-top: 5px; }
+        .alarm-grid { display: flex; gap: 10px; }
+        button { margin-top: 25px; width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Companion Dashboard</h2>
+        <form id="settingsForm">
+            <label>Select Character:</label>
+            <select name="character">
+                {% for char in characters %}
+                <option value="{{ char }}" {% if char == current %}selected{% endif %}>{{ char }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Random Animation Interval (sec):</label>
+            <input type="number" name="interval" value="{{ interval }}" min="5">
+
+            <label>Character Scale (0.1 to 2.0):</label>
+            <input type="number" name="scale" value="{{ scale }}" step="0.1" min="0.1" max="2.0">
+
+            <label>Animation Speed (Frames Per Second):</label>
+            <input type="number" name="anim_fps" value="{{ anim_fps }}" min="1" max="60">
+
+            <label>News Topic (for Right-Click):</label>
+            <input type="text" name="news_topic" value="{{ news_topic }}">
+
+            <label>Coffee Break Alarms (HH:MM):</label>
+            <div class="alarm-grid">
+                <input type="time" name="alarm_1" value="{{ alarms[0] }}">
+                <input type="time" name="alarm_2" value="{{ alarms[1] }}">
+                <input type="time" name="alarm_3" value="{{ alarms[2] }}">
+            </div>
+
+            <button type="button" onclick="saveSettings()">Save Configuration</button>
+        </form>
+    </div>
+
+    <script>
+        function saveSettings() {
+            let formData = new FormData(document.getElementById('settingsForm'));
+            fetch('/update', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => alert('Settings Updated Successfully!'));
+        }
+    </script>
+</body>
+</html>
